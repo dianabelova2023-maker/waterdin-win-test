@@ -26,7 +26,8 @@ jobs:
       - name: Set 7-day trial policy
         shell: pwsh
         run: |
-  python -c "import json; from datetime import datetime, timedelta, timezone; from pathlib import Path; p=Path('src'); p.mkdir(parents=True, exist_ok=True); exp=(datetime.now(timezone.utc)+timedelta(days=7)).strftime('%Y-%m-%dT%H:%M:%SZ'); Path('src/trial_policy.json').write_text(json.dumps({'expires_utc': exp}), encoding='utf-8')"
+          python -c "import json; from datetime import datetime, timedelta, timezone; from pathlib import Path; p=Path('src'); p.mkdir(parents=True, exist_ok=True); exp=(datetime.now(timezone.utc)+timedelta(days=7)).strftime('%Y-%m-%dT%H:%M:%SZ'); Path('src/trial_policy.json').write_text(json.dumps({'expires_utc': exp}), encoding='utf-8')"
+
       - name: Build Waterdin EXE
         shell: pwsh
         run: |
@@ -67,5 +68,3 @@ jobs:
         with:
           name: Waterdin_Windows_EXE
           path: release/*
-
-
